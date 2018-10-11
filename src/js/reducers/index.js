@@ -1,21 +1,15 @@
-// Here import of the action type to tell the app what to do with such action type
-import { ADD_MOVIE } from '../constants/action-types'
+import { combineReducers } from 'redux'
 
-const initialState =
-{
-	movies: []
-}
+import { authentication } from './authentication.reducer'
+import { registration } from './registration.reducer'
+import { users } from './users.reducer'
+import { alert } from './alert.reducer'
 
-const rootReducer = (state = initialState, action) =>
-{
-	switch (action.type)
-	{
-	// Here we verify if its an "ADD_MOVIE" action type and do accordingly
-	case ADD_MOVIE:
-		return { ...state, movies: [...state.movies, (action.payload)] }
-	default:
-		return state
-	}
-}
+const rootReducer = combineReducers({
+  authentication,
+  registration,
+  users,
+  alert
+})
 
 export default rootReducer
