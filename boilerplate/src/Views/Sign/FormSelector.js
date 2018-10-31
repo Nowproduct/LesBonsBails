@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Login from './SignIn/index';
-import Register from './SignUp/index';
+import SignIn from './SignIn/index';
+import SignUp from './SignUp/index';
 
 class FormSelector extends Component{
 
@@ -17,13 +17,14 @@ class FormSelector extends Component{
 
     clickRegister(isConnect, event) {
         this.setState({
-            isConnect: isConnect
+            isConnect: !isConnect
         })
+        console.log(this.state.isConnect)
     }
 
     clickLogin(isConnect, event) {
         this.setState({
-            isConnect: isConnect
+            isConnect: !isConnect
         })
     }
 
@@ -31,8 +32,8 @@ class FormSelector extends Component{
 
         return (
             <div>
-                <Login name="form-login-page login-form" show={this.state.isConnect} action={this.clickRegister}/>
-                <Register name="form-login-page register-form" show={!this.state.isConnect} action={this.clickLogin}/>
+                <SignIn name="form-login-page login-form" show={!this.state.isConnect} action={this.clickRegister}/>
+                <SignUp name="form-login-page register-form" show={this.state.isConnect} action={this.clickLogin}/>
             </div>
         );
     }

@@ -25,4 +25,4 @@ class sign extends Component
         </div> 
       )
     }
-  }
+  } export default sign
