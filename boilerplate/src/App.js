@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import Button from '@material-ui/core/Button';
+import { connect } from "react-redux";
+import List from './List';
+const mapStateToProps = state => 
+{
+  return { user: state.user };
+};
+
 
 class App extends Component
 {
@@ -16,6 +23,7 @@ class App extends Component
 }
   render()
   {
+    console.log(localStorage.getItem('user'))
     return (
       <div className="wrapper">
         Connected haha
@@ -23,9 +31,10 @@ class App extends Component
       onClick={() => this.logOut()}>
       Disconnect
       </Button>
+      <List />
       </div>  
     )
   }
 }
 
-export default App;
+export default connect (mapStateToProps)(App);

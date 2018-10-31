@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
+import { addUser } from "../../../actions/index";
 import API from '../../../components/api';
 
 import Button from '@material-ui/core/Button';
@@ -39,16 +41,31 @@ class SignIn extends Component {
             email: this.state.email,
             password: this.state.password
         }
+        let self = this;
         API.post('/connect', user)
             .then(function (res){
-                let token = res.data.data;
+                let token = res.data.data.token;
                 localStorage.setItem('token', token);
-                console.log('Connection success', res);
-                window.location.pathname = "/";
+                console.log(localStorage.getItem('token'))
+                API.get('/me/profile', {
+                    headers: {
+                        'authorization' : 'Bearer ' + token
+                    }
+                })
+                    .then(function(res){
+                        console.log('Profil success', res)
+                        localStorage.setItem('user', JSON.stringify(res.data.data));
+                        self.props.addUser(JSON.stringify(res.data.data));
+                        window.location.pathname = "/";
+
+                    })
+                    .catch (function(error){
+                        console.log(error);
+                    })
             })
             .catch(function(error) {
                 console.log('Connection failed', error);
-            });     
+            });  
     }
 
     render(){
@@ -100,4 +117,11 @@ class SignIn extends Component {
         return page;
     }
 }
-export default SignIn;
+
+const mapDispatchToProps = dispatch => {
+    return {
+      addUser: user => dispatch(addUser(user))
+    };
+  };
+
+export default connect (null, mapDispatchToProps)(SignIn);

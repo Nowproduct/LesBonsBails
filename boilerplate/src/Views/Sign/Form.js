@@ -5,12 +5,6 @@ import uuidv1 from "uuid";
 import { addUser } from "../actions/index";
 import '../styles/Form.css'
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addUser: user => dispatch(addUser(user))
-  };
-};
-
 class ConnectedForm extends Component {
   constructor() {
     super();
@@ -84,6 +78,12 @@ class ConnectedForm extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addUser: user => dispatch(addUser(user))
+  };
+};
 
 const Form = connect(null, mapDispatchToProps)(ConnectedForm);
 export default Form;

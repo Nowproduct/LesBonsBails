@@ -7,7 +7,10 @@ const mapStateToProps = state =>
   return { user: state.user };
 };
 
+console.log(this.props.mapStateToProps)
+
 const ConnectedList = ({ user }) => (
+
   <ul className="list-group list-group-flush">
     {user.map(el => (
       <div>
