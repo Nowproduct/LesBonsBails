@@ -18,7 +18,8 @@ class SignIn extends Component {
         this.state = {
             email : '',
             password : '',
-            isLoggedIn : Boolean(localStorage.getItem('token'))
+            isLoggedIn : Boolean(localStorage.getItem('token')),
+            user: {}
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -53,9 +54,12 @@ class SignIn extends Component {
                     }
                 })
                     .then(function(res){
-                        console.log('Profil success', res)
+                        console.log('Profil success');
                         localStorage.setItem('user', JSON.stringify(res.data.data));
-                        self.props.addUser(JSON.stringify(res.data.data));
+                        self.setState({
+                            user: res.data.data
+                        })
+                        self.props.addUser(self.state.user)
                         window.location.pathname = "/";
 
                     })
@@ -65,7 +69,7 @@ class SignIn extends Component {
             })
             .catch(function(error) {
                 console.log('Connection failed', error);
-            });  
+            });
     }
 
     render(){
