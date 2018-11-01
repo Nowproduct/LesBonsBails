@@ -42,6 +42,9 @@ class SignIn extends Component {
             email: this.state.email,
             password: this.state.password
         }
+        const email = this.state.email;
+        const password = this.state.password
+        this.props.addUser({email, password})
         let self = this;
         API.post('/connect', user)
             .then(function (res){
@@ -128,4 +131,4 @@ const mapDispatchToProps = dispatch => {
     };
   };
 
-export default connect (null, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);

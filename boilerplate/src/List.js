@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => 
 {
+  console.log(state)
   return { user: state.user };
 };
+
 
 const ConnectedList = ({ user }) => (
 
