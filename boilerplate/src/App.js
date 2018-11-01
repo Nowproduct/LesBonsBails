@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
 import List from './List';
+import Form from './Views/Sign/Form'
 const mapStateToProps = state => 
 {
   return { user: state.user };
@@ -31,6 +32,7 @@ class App extends Component
       onClick={() => this.logOut()}>
       Disconnect
       </Button>
+      <Form />
       <List />
       </div>  
     )

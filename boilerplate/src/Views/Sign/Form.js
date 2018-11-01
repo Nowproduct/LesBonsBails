@@ -2,8 +2,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
-import { addUser } from "../actions/index";
-import '../styles/Form.css'
+import { addUser } from "../../actions/index";
+
+import '../../styles/Form.css'
 
 class ConnectedForm extends Component {
   constructor() {

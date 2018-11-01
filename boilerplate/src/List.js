@@ -20,6 +20,12 @@ const ConnectedList = ({ user }) => (
         <p className="list-group-item" key={el.id}>
           Password: {el.password} 
         </p>
+        <p className="list-group-item" key={el.id}>
+          email {el.email} 
+        </p>
+        <p className="list-group-item" key={el.id}>
+          id: {el.id} 
+        </p>
       </div>
 ))}
   </ul>

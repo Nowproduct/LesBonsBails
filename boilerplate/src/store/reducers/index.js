@@ -12,7 +12,7 @@ const rootReducer = (state = initialState, action) =>
     {
         // Here we verify if its an "ADD_MOVIE" action type and do accordingly
         case actionsTypes.ADD_USER:
-            return { ...state, user: [...state.user, (action.payload)] }
+            return { ...state, user: [(action.payload)] }
         default:
             return state
     }

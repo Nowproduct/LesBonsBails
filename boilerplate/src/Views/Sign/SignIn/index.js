@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { addUser } from "../../../actions/index";
 import API from '../../../components/api';
 
+import Form from '../Form'
+
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
@@ -50,7 +52,6 @@ class SignIn extends Component {
             .then(function (res){
                 let token = res.data.data.token;
                 localStorage.setItem('token', token);
-                console.log(localStorage.getItem('token'))
                 API.get('/me/profile', {
                     headers: {
                         'authorization' : 'Bearer ' + token
@@ -60,10 +61,10 @@ class SignIn extends Component {
                         console.log('Profil success');
                         localStorage.setItem('user', JSON.stringify(res.data.data));
                         self.setState({
-                            user: res.data.data
+                            user: res.data.data,
+                            isLoggedIn: Boolean(localStorage.getItem('token'))
                         })
                         self.props.addUser(self.state.user)
-                        window.location.pathname = "/";
 
                     })
                     .catch (function(error){
@@ -120,6 +121,7 @@ class SignIn extends Component {
                     </div>
                 </form>
             </div>
+
         );
         return page;
     }
