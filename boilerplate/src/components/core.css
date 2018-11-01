@@ -1,0 +1,64 @@
+header {
+    background-color: #f57c00 !important;
+}
+
+.page.open {
+    margin-left: 240px;
+}
+
+.page.close {
+    margin-left: 0;
+}
+
+.sidenav {
+    z-index: 1;
+}
+
+.sidenav div {
+    background-color: #212121 !important;
+    margin-top: 64px;
+    padding-top: 20px;
+}
+
+.sidenav.open div {
+    width: 240px;
+}
+
+.sidenav.close div {
+    width: 0;
+}
+
+.navbar-title {
+    /*flex: 1;*/
+}
+
+.react-autosuggest__container {
+    margin: 0 0 0 40%;
+}
+
+.react-autosuggest__input {
+    font-size: 1.3em;
+    border-radius: 25px;
+    padding: 3px 10px 0px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.navbar-button {
+    position: absolute;
+    right: 20px;
+}
+
+.sidenav-button {
+    line-height: 45px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 50px;
+    height: auto;
+}
+
+.sidenav-button.active {
+    background-color: #000000;
+    border-left: 5px solid #f57c00;
+}
