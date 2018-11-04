@@ -3,11 +3,6 @@ import { NavLink } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import './core.css';
 
-const styleSnav = {
-    size: '80%',
-    paddingRight: '8px'
-};
-
 class Sidenav extends Component {
 
     constructor(props) {
@@ -43,7 +38,6 @@ class Sidenav extends Component {
             >
                 <NavLink to="/CreateOffer" exact className="sidenav-button" onClick={this.hideEvent}>Nouvelle offre</NavLink>
                 <NavLink to="/" exact className="sidenav-button" onClick={this.hideEvent}>Article Récents</NavLink>
-                <NavLink to="/news" exact className="sidenav-button" onClick={this.hideEvent}>Mes Articles</NavLink>
 
             </Drawer>
         )

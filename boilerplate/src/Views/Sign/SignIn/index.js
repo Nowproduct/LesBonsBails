@@ -100,6 +100,7 @@ class SignIn extends Component {
                         <Input
                             id="logPass"
                             name="password"
+                            type='password'
                             value={this.state.password}
                             onChange={this.handleChange}
                         />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ListOffer from './Views/List/index';
+import ListOffer from './Views/Offer/List/index';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from "./components/navbar";
 import Sidenav from "./components/sidenav";
@@ -21,6 +21,7 @@ class App extends Component
       searchValue: ''
   };
 
+  localStorage.clear();
   this.logOut = this.logOut.bind(this);
   this.toggleSidenav = this.toggleSidenav.bind(this);
   }
