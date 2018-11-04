@@ -17,7 +17,6 @@ class SignUp extends Component {
             passwordConfirm: '',
             nickname: '',
             valid: false,
-            showPassword: false,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -85,7 +84,7 @@ class SignUp extends Component {
                         <Input
                             id="password"
                             name="password"
-                            type={this.state.showPassword ? 'text' : 'password'}
+                            type='password'
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
@@ -95,7 +94,7 @@ class SignUp extends Component {
                         <Input
                             id="passConfirm"
                             name="passwordConfirm"
-                            type={this.state.showPassword ? 'text' : 'password'}
+                            type='password'
                             value={this.state.passwordConfirm}
                             onChange={this.handleChange}
                         />

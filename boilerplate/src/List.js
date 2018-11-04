@@ -24,6 +24,9 @@ const ConnectedList = ({ user }) => (
           email {el.email} 
         </p>
         <p className="list-group-item" key={el.id}>
+          token {el.token} 
+        </p>
+        <p className="list-group-item" key={el.id}>
           id: {el.id} 
         </p>
       </div>

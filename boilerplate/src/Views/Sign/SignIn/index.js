@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { addUser } from "../../../actions/index";
 import API from '../../../components/api';
 
-import Form from '../Form'
-
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
@@ -20,7 +18,7 @@ class SignIn extends Component {
         this.state = {
             email : '',
             password : '',
-            isLoggedIn : Boolean(localStorage.getItem('token')),
+            isLoggedIn : 0,
             user: {}
         }
         this.handleChange = this.handleChange.bind(this)
@@ -50,18 +48,20 @@ class SignIn extends Component {
         let self = this;
         API.post('/connect', user)
             .then(function (res){
-                let token = res.data.data.token;
-                localStorage.setItem('token', token);
+                self.setState({
+                    token: res.data.data.token
+                })
+                localStorage.setItem('token', self.state.token);
                 API.get('/me/profile', {
                     headers: {
-                        'authorization' : 'Bearer ' + token
+                        'authorization' : 'Bearer ' + self.state.token
                     }
                 })
                     .then(function(res){
                         console.log('Profil success');
                         localStorage.setItem('user', JSON.stringify(res.data.data));
                         self.setState({
-                            user: res.data.data,
+                            user: {...res.data.data, token: self.state.token},
                             isLoggedIn: Boolean(localStorage.getItem('token'))
                         })
                         self.props.addUser(self.state.user)
@@ -100,7 +100,7 @@ class SignIn extends Component {
                         <Input
                             id="logPass"
                             name="password"
-                            type={this.state.showPassword ? 'text' : 'password'}
+                            type='password'
                             value={this.state.password}
                             onChange={this.handleChange}
                         />
